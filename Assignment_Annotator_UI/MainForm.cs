@@ -65,7 +65,7 @@ namespace Assignment_Annotator_UI
                 score = "";
             if (e.KeyCode == Keys.Delete)
             {
-                DeteleTicks();
+                DeleteTicks();
             }
             else if (e.KeyCode == Keys.S)
             {
@@ -271,10 +271,21 @@ namespace Assignment_Annotator_UI
                 pageIndex += 1;
                 ViewPage();
             }
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void SaveDocument()
+        {
+            SaveDocument();
+        }
+
+
+
+        private void pbImage_MouseClick(object sender, MouseEventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF Files | *.pdf";
@@ -285,11 +296,6 @@ namespace Assignment_Annotator_UI
                 PDF.Export(sfd.FileName, pages.ToArray());
                 //this.Text = $"PDF Assignment Grader - {Path.GetFileName(DATA.fileName)}";
             }
-        }
-
-        private void pbImage_MouseClick(object sender, MouseEventArgs e)
-        {
-
         }
 
         private void AddTick()
@@ -373,10 +379,10 @@ namespace Assignment_Annotator_UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DeteleTicks();
+            DeleteTicks();
         }
 
-        private void DeteleTicks()
+        private void DeleteTicks()
         {
             ticks = ticks.Where(c => !c.isSelceted).ToList<Annotation>();
             if (pages != null)
@@ -468,37 +474,6 @@ namespace Assignment_Annotator_UI
             }
         }
 
-        private void moveFinalScoreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            annotationType = 'M';
-        }
-
-        private void addCorrectMarkerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            annotationType = 'C';
-        }
-
-        private void addIncorrectMarkerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            annotationType = 'I';
-        }
-
-        private void addCommentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            annotationType = 'T';
-
-        }
-
-        private void selectAnnotationsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            annotationType = 'S';
-        }
-
-        private void deleteSelectedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DeteleTicks();
-        }
-
         private void pbImage_MouseLeave(object sender, EventArgs e)
         {
             pbImage.Cursor = Cursors.Default;
@@ -580,7 +555,60 @@ namespace Assignment_Annotator_UI
 
         private void openDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            OpenPDF();
+        }
+
+        private void nextPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pageIndex + 1 <= DATA.pageCount - 1)
+            {
+                pageIndex += 1;
+                ViewPage();
+            }
+        }
+
+        private void previousPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pageIndex - 1 >= 0 )
+            {
+                pageIndex -= 1;
+                ViewPage();
+            }
+        }
+
+        private void selectCorrectAnnotationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'C';
+        }
+
+        private void selectIncorrectAnnotationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'I';
+        }
+
+        private void selectTextAnnotationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'T';
+        }
+
+        private void selectAnnotationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'S';
+        }
+
+        private void deleteSelectedAnnotationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteTicks();
+        }
+
+        private void repositionFinalScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'M';
+        }
+
+        private void saveDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveDocument();
         }
     }
 }

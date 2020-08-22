@@ -69,6 +69,7 @@
             this.openDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repositionFinalScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainToolsMenu.SuspendLayout();
             this.pnlImage.SuspendLayout();
@@ -269,6 +270,7 @@
             // 
             // pbImage
             // 
+            this.pbImage.ContextMenuStrip = this.cmsImage;
             this.pbImage.Location = new System.Drawing.Point(0, 0);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(673, 338);
@@ -299,9 +301,10 @@
             this.selectIncorrectAnnotationToolStripMenuItem,
             this.selectTextAnnotationToolStripMenuItem,
             this.selectAnnotationsToolStripMenuItem,
-            this.deleteSelectedAnnotationsToolStripMenuItem});
+            this.deleteSelectedAnnotationsToolStripMenuItem,
+            this.repositionFinalScoreToolStripMenuItem});
             this.cmsImage.Name = "cmsImage";
-            this.cmsImage.Size = new System.Drawing.Size(220, 158);
+            this.cmsImage.Size = new System.Drawing.Size(220, 180);
             // 
             // toolStripLabel1
             // 
@@ -346,42 +349,49 @@
             this.nextPageToolStripMenuItem.Name = "nextPageToolStripMenuItem";
             this.nextPageToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.nextPageToolStripMenuItem.Text = "Next Page";
+            this.nextPageToolStripMenuItem.Click += new System.EventHandler(this.nextPageToolStripMenuItem_Click);
             // 
             // previousPageToolStripMenuItem
             // 
             this.previousPageToolStripMenuItem.Name = "previousPageToolStripMenuItem";
             this.previousPageToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.previousPageToolStripMenuItem.Text = "Previous Page";
+            this.previousPageToolStripMenuItem.Click += new System.EventHandler(this.previousPageToolStripMenuItem_Click);
             // 
             // selectCorrectAnnotationToolStripMenuItem
             // 
             this.selectCorrectAnnotationToolStripMenuItem.Name = "selectCorrectAnnotationToolStripMenuItem";
             this.selectCorrectAnnotationToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.selectCorrectAnnotationToolStripMenuItem.Text = "Select correct annotation";
+            this.selectCorrectAnnotationToolStripMenuItem.Click += new System.EventHandler(this.selectCorrectAnnotationToolStripMenuItem_Click);
             // 
             // selectIncorrectAnnotationToolStripMenuItem
             // 
             this.selectIncorrectAnnotationToolStripMenuItem.Name = "selectIncorrectAnnotationToolStripMenuItem";
             this.selectIncorrectAnnotationToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.selectIncorrectAnnotationToolStripMenuItem.Text = "Select incorrect annotation";
+            this.selectIncorrectAnnotationToolStripMenuItem.Click += new System.EventHandler(this.selectIncorrectAnnotationToolStripMenuItem_Click);
             // 
             // selectTextAnnotationToolStripMenuItem
             // 
             this.selectTextAnnotationToolStripMenuItem.Name = "selectTextAnnotationToolStripMenuItem";
             this.selectTextAnnotationToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.selectTextAnnotationToolStripMenuItem.Text = "Select text annotation";
+            this.selectTextAnnotationToolStripMenuItem.Click += new System.EventHandler(this.selectTextAnnotationToolStripMenuItem_Click);
             // 
             // selectAnnotationsToolStripMenuItem
             // 
             this.selectAnnotationsToolStripMenuItem.Name = "selectAnnotationsToolStripMenuItem";
             this.selectAnnotationsToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.selectAnnotationsToolStripMenuItem.Text = "Select annotations";
+            this.selectAnnotationsToolStripMenuItem.Click += new System.EventHandler(this.selectAnnotationsToolStripMenuItem_Click);
             // 
             // deleteSelectedAnnotationsToolStripMenuItem
             // 
             this.deleteSelectedAnnotationsToolStripMenuItem.Name = "deleteSelectedAnnotationsToolStripMenuItem";
             this.deleteSelectedAnnotationsToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.deleteSelectedAnnotationsToolStripMenuItem.Text = "Delete selected annotations";
+            this.deleteSelectedAnnotationsToolStripMenuItem.Click += new System.EventHandler(this.deleteSelectedAnnotationsToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -405,6 +415,7 @@
             this.saveDocumentToolStripMenuItem.Name = "saveDocumentToolStripMenuItem";
             this.saveDocumentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveDocumentToolStripMenuItem.Text = "Save document";
+            this.saveDocumentToolStripMenuItem.Click += new System.EventHandler(this.saveDocumentToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -412,6 +423,13 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
+            // 
+            // repositionFinalScoreToolStripMenuItem
+            // 
+            this.repositionFinalScoreToolStripMenuItem.Name = "repositionFinalScoreToolStripMenuItem";
+            this.repositionFinalScoreToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.repositionFinalScoreToolStripMenuItem.Text = "Reposition final score";
+            this.repositionFinalScoreToolStripMenuItem.Click += new System.EventHandler(this.repositionFinalScoreToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -483,6 +501,7 @@
         private System.Windows.Forms.ToolStripMenuItem openDocumentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveDocumentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repositionFinalScoreToolStripMenuItem;
     }
 }
 
