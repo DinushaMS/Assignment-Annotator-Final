@@ -61,32 +61,19 @@ namespace Assignment_Annotator_UI
                 if (!Directory.Exists(imageOutputPath))
                     Directory.CreateDirectory(imageOutputPath + "\\images");
                 pageImage.Save(imageOutputPath + "\\" + imageName + i.ToString() + "." + imageFormat.ToString(), imageFormat);
-                string imgPath = imageOutputPath + "\\" + imageName + i.ToString() + "." + imageFormat.ToString();
-                DATA.OriginalImages.Add(new Bitmap(GetCopyImage(imgPath)));
-                File.Delete(imgPath);
-        
+                DATA.OriginalImages.Add(new Bitmap(imageOutputPath + "\\" + imageName + i.ToString() + "." + imageFormat.ToString()));
+
                 pageImage.Dispose();
-                Console.WriteLine($"page {i} converted, width:{DATA.OriginalImages[i-1].Width} height:{DATA.OriginalImages[i - 1].Height}");
+                Console.WriteLine($"page {i} converted, width:{DATA.OriginalImages[i - 1].Width} height:{DATA.OriginalImages[i - 1].Height}");
             }
-
-
             //foreach (var item in DATA.OriginalImages)
             //{
             //    DATA.AnnotatedImages.Add(item);
             //}
             //DATA.AnnotatedImages = DATA.OriginalImages;
-           
+
             pdfFile.Dispose();
             Console.WriteLine("Done!");
-        }
-
-        private static Image GetCopyImage(string path)
-        {
-            using (Image im = Image.FromFile(path))
-            {
-                Bitmap bm = new Bitmap(im);
-                return bm;
-            }
         }
 
     }

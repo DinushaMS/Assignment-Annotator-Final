@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_Annotator_UI", "Assignment_Annotator_UI\Assignment_Annotator_UI.csproj", "{E49BC541-8449-4106-AFBC-D851CBB9858D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Assignment Annotator Setup UI", "Assignment Annotator Setup UI\Assignment Annotator Setup UI.vdproj", "{3168EDF7-F982-4837-88A4-13821F14094E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{E49BC541-8449-4106-AFBC-D851CBB9858D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E49BC541-8449-4106-AFBC-D851CBB9858D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E49BC541-8449-4106-AFBC-D851CBB9858D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3168EDF7-F982-4837-88A4-13821F14094E}.Debug|Any CPU.ActiveCfg = Debug
+		{3168EDF7-F982-4837-88A4-13821F14094E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

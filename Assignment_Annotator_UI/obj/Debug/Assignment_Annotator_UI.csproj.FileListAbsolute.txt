@@ -71,7 +71,6 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\b
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Debug\itext.styledxmlparser.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Debug\itext.svg.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Debug\SharpUpdate.pdb
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.csprojAssemblyReference.cache
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.CommentForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.MainForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.Properties.Resources.resources
@@ -80,3 +79,4 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\o
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.csproj.CopyComplete
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.exe
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.pdb
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Debug\Assignment_Annotator_UI.AboutForm.resources

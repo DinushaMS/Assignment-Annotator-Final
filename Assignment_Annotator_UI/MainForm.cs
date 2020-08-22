@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
+using System.Drawing.Text;
+using System.Threading;
+using System.Runtime.InteropServices.ComTypes;
+using System.Configuration;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Diagnostics;
 using SharpUpdate;
+using System.Reflection;
 
 namespace Assignment_Annotator_UI
 {
     public partial class MainForm : Form
     {
+        AboutForm aboutForm;
+        SharpUpdater updater;
         bool ctScore = false;
         int pageIndex = 0;
         int xf = 0; //fraction from 1000
@@ -33,16 +39,20 @@ namespace Assignment_Annotator_UI
         SolidBrush drawBrush_selected = new SolidBrush(System.Drawing.Color.Blue);
         public static bool isSaved = true;
         System.Drawing.Image imageFile;
-        SharpUpdater updater;
+
+        public string WelcomeFilePath { get; private set; }
+
         public MainForm()
         {
             InitializeComponent();
+
             DATA.pageCount = 0;
             updater = new SharpUpdater(Assembly.GetExecutingAssembly(), this, new Uri("https://raw.githubusercontent.com/DinushaMS/Assignment-Annotator-Final/master/Assignment_Annotator_UI/bin/Release/update.xml"));
         }
 
-        private void FrmMain_KeyDown(object sender, KeyEventArgs e)
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            //MessageBox.Show($"{e.KeyValue},{e.KeyCode},{e.KeyData}");
             int n = e.KeyValue - 48;
             if (!ctScore)
             {
@@ -102,6 +112,33 @@ namespace Assignment_Annotator_UI
 
         }
 
+        private void OpenFile(string filePath)
+        {
+            DATA.panelWidth = pnlImage.Width;
+            DATA.sourcePDFpath = filePath;
+            DATA.sourceImageDirpath = ".//Images";
+            //this.Text = $"PDF Assignment Grader - {DATA.fileName}*";
+            Console.WriteLine(filePath);
+            Console.WriteLine(Path.GetDirectoryName(filePath));
+            try
+            {
+                PDF2IMG.ConvertPDF2Image(DATA.sourcePDFpath, DATA.sourceImageDirpath, "page", ImageFormat.Jpeg);
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
+            ticks = new List<Annotation>();
+            pages = new List<Pages>();
+            DATA.finalScore = 0;
+            for (int i = 0; i < DATA.pageCount; i++)
+            {
+                Pages p = new Pages();
+                pages.Add(p);
+            }
+            ViewPage();
+        }
+
         private void OFD()
         {
             isSaved = false;
@@ -112,29 +149,7 @@ namespace Assignment_Annotator_UI
             DATA.fileName = Path.GetFileName(ofd.FileName);
             if (response == DialogResult.OK)
             {
-                DATA.panelWidth = pnlImage.Width;
-                DATA.sourcePDFpath = ofd.FileName;
-                DATA.sourceImageDirpath = ".//Images";
-                //this.Text = $"PDF Assignment Grader - {DATA.fileName}*";
-                Console.WriteLine(ofd.FileName);
-                Console.WriteLine(Path.GetDirectoryName(ofd.FileName));
-                try
-                {
-                    PDF2IMG.ConvertPDF2Image(DATA.sourcePDFpath, DATA.sourceImageDirpath, "page", ImageFormat.Jpeg);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-                ticks = new List<Annotation>();
-                pages = new List<Pages>();
-                DATA.finalScore = 0;
-                for (int i = 0; i < DATA.pageCount; i++)
-                {
-                    Pages p = new Pages();
-                    pages.Add(p);
-                }
-                ViewPage();
+                OpenFile(ofd.FileName);
             }
         }
         private void pbImage_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -174,8 +189,8 @@ namespace Assignment_Annotator_UI
             if (true)//paintEnabled && DATA.OriginalImages != null)
             {
                 // Create image.
-                //imageFile = System.Drawing.Image.FromFile($"{DATA.sourceImageDirpath}\\page{pageIndex+1}.Jpeg");//DATA.OriginalImages[pageIndex];//
-                imageFile = DATA.OriginalImages[pageIndex];
+                imageFile = System.Drawing.Image.FromFile($"{DATA.sourceImageDirpath}\\page{pageIndex + 1}.Jpeg");//DATA.OriginalImages[pageIndex];//
+
                 // Create graphics object for alteration.
                 Graphics newGraphics = Graphics.FromImage(imageFile);
                 foreach (var item in ticks)
@@ -261,11 +276,6 @@ namespace Assignment_Annotator_UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SaveDocument();
-        }
-
-        private void SaveDocument()
-        {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF Files | *.pdf";
             sfd.DefaultExt = "pdf";
@@ -275,6 +285,11 @@ namespace Assignment_Annotator_UI
                 PDF.Export(sfd.FileName, pages.ToArray());
                 //this.Text = $"PDF Assignment Grader - {Path.GetFileName(DATA.fileName)}";
             }
+        }
+
+        private void pbImage_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
 
         private void AddTick()
@@ -449,13 +464,65 @@ namespace Assignment_Annotator_UI
             }
             else if (e.Button == MouseButtons.Right)
             {
-                cmsImage.Show(this, new Point(e.X, e.Y));
+                //mainMenu.Show(this, new Point(e.X, e.Y));
             }
+        }
+
+        private void moveFinalScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'M';
+        }
+
+        private void addCorrectMarkerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'C';
+        }
+
+        private void addIncorrectMarkerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'I';
+        }
+
+        private void addCommentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'T';
+
+        }
+
+        private void selectAnnotationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            annotationType = 'S';
+        }
+
+        private void deleteSelectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeteleTicks();
         }
 
         private void pbImage_MouseLeave(object sender, EventArgs e)
         {
             pbImage.Cursor = Cursors.Default;
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPDF();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                DATA.fileName = Path.GetFileName(sfd.FileName);
+                PDF.Export(sfd.FileName, pages.ToArray());
+                //this.Text = $"PDF Assignment Grader - {Path.GetFileName(DATA.fileName)}";
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void txtScore_TextChanged(object sender, EventArgs e)
@@ -472,7 +539,7 @@ namespace Assignment_Annotator_UI
                 DATA.outOf = value;
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!isSaved)
             {
@@ -482,14 +549,38 @@ namespace Assignment_Annotator_UI
             }
         }
 
-        private void tsmiAbout_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+            if (File.Exists(WelcomeFilePath))
+            {
+                OpenFile(WelcomeFilePath);
+            }
         }
 
         private void tsmiCheckForUpdates_Click(object sender, EventArgs e)
         {
+            updater.DoUpdate();
+        }
 
+        private void tsmiAbout_Click(object sender, EventArgs e)
+        {
+            if (aboutForm == null)
+            {
+                aboutForm = new AboutForm();
+                aboutForm.Show();
+            }
+            else
+                aboutForm.Activate();
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void openDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
