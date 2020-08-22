@@ -30,7 +30,6 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\b
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\itext.styledxmlparser.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\itext.svg.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\SharpUpdate.pdb
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.csprojAssemblyReference.cache
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.CommentForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.MainForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.Properties.Resources.resources

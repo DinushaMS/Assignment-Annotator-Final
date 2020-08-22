@@ -183,4 +183,7 @@
     <None Include="Resources\wrong_selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>C:\Users\dinus\source\repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Xml_Writer_ConsoleApp.exe</PostBuildEvent>
+  </PropertyGroup>
 </Project>
