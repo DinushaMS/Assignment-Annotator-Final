@@ -5,14 +5,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
-using System.Security.Cryptography.X509Certificates;
-using System.Drawing.Text;
-using System.Threading;
-using System.Runtime.InteropServices.ComTypes;
-using System.Configuration;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using SharpUpdate;
 using System.Reflection;
 
@@ -38,9 +30,7 @@ namespace Assignment_Annotator_UI
         SolidBrush drawBrush = new SolidBrush(System.Drawing.Color.Red);
         SolidBrush drawBrush_selected = new SolidBrush(System.Drawing.Color.Blue);
         public static bool isSaved = true;
-        System.Drawing.Image imageFile;
-
-        public string WelcomeFilePath { get; private set; }
+        string WelcomeFilePath = "Stamps\\Original.pdf";
 
         public MainForm()
         {
@@ -98,10 +88,6 @@ namespace Assignment_Annotator_UI
                 DialogResult res = MessageBox.Show("Document not saved. Ignore and continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
-                    //ConfigurationSettings.AppSettings.Set("exitNopen","true");
-                    //Application.Restart();
-                    //Environment.Exit(0);
-                    //imageFile = System.Drawing.Image.FromFile($".\\Stamps\\page5.Jpeg");
                     OFD();
                 }
             }
@@ -114,19 +100,26 @@ namespace Assignment_Annotator_UI
 
         private void OpenFile(string filePath)
         {
+            //if (DATA.OriginalImages != null)
+            //    pbImage.Image = DATA.OriginalImages[1];
+
             DATA.panelWidth = pnlImage.Width;
             DATA.sourcePDFpath = filePath;
-            DATA.sourceImageDirpath = ".//Images";
-            //this.Text = $"PDF Assignment Grader - {DATA.fileName}*";
+            DATA.sourceImageDirpath = Path.Combine(Path.GetTempPath(), "PA_Images");
+            this.Text = $"Assignment Annotator - {DATA.fileName}*";
             Console.WriteLine(filePath);
             Console.WriteLine(Path.GetDirectoryName(filePath));
+            PDF2IMG p2i = new PDF2IMG();
             try
             {
-                PDF2IMG.ConvertPDF2Image(DATA.sourcePDFpath, DATA.sourceImageDirpath, "page", ImageFormat.Jpeg);
+                if (DATA.OriginalImages != null)
+                    pbImage.Image = DATA.OriginalImages[0];
+                DATA.OriginalImages = new List<Bitmap>();
+                p2i.ConvertPDF2Image(DATA.sourcePDFpath, DATA.sourceImageDirpath, "page", ImageFormat.Jpeg);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //throw;
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ticks = new List<Annotation>();
             pages = new List<Pages>();
@@ -146,6 +139,7 @@ namespace Assignment_Annotator_UI
             ofd.Filter = "PDF Files | *.pdf";
             ofd.DefaultExt = "pdf";
             DialogResult response = ofd.ShowDialog();
+            Console.WriteLine(ofd.FileName);
             DATA.fileName = Path.GetFileName(ofd.FileName);
             if (response == DialogResult.OK)
             {
@@ -155,7 +149,7 @@ namespace Assignment_Annotator_UI
         private void pbImage_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 30;
-            Console.WriteLine($"Hit{numberOfTextLinesToMove}");
+            //Console.WriteLine($"Hit{numberOfTextLinesToMove}");
             if (vsbImage.Value - numberOfTextLinesToMove >= 0 && vsbImage.Value - numberOfTextLinesToMove <= vsbImage.Maximum)
             {
                 vsbImage.Value -= numberOfTextLinesToMove;
@@ -183,15 +177,18 @@ namespace Assignment_Annotator_UI
         }
 
         private void Draw()
-        {
-            int x = 0, y = 0;
-
+        {     
             if (true)//paintEnabled && DATA.OriginalImages != null)
             {
-                // Create image.
-                imageFile = System.Drawing.Image.FromFile($"{DATA.sourceImageDirpath}\\page{pageIndex + 1}.Jpeg");//DATA.OriginalImages[pageIndex];//
+                pbImage.Image = GetCopyImage($"{DATA.sourceImageDirpath}\\page{pageIndex + 1}.Jpeg");
+            }
+        }
 
-                // Create graphics object for alteration.
+        private Image GetCopyImage(string path)
+        {
+            int x = 0, y = 0;
+            using (Image imageFile = Image.FromFile(path))
+            {
                 Graphics newGraphics = Graphics.FromImage(imageFile);
                 foreach (var item in ticks)
                 {
@@ -221,7 +218,7 @@ namespace Assignment_Annotator_UI
                     }
                 }
 
-                if (pageIndex == 0)
+                if (pageIndex == 0 && DATA.sourcePDFpath != WelcomeFilePath)
                 {
                     x = (PDF.fScoreOrigin.X * DATA.OriginalImages[pageIndex].Width) / 1000;
                     y = (PDF.fScoreOrigin.Y * DATA.OriginalImages[pageIndex].Height) / 1000;
@@ -229,29 +226,31 @@ namespace Assignment_Annotator_UI
                     newGraphics.DrawString($"------", drawFont, drawBrush, x, y + 16);
                     newGraphics.DrawString($"{DATA.outOf}", drawFont, drawBrush, x, y + 40);
                 }
-                //DATA.AnnotatedImages[pageIndex] = (Bitmap)imageFile;
-                pbImage.Image = (Bitmap)imageFile;
+                //pictureBox1.Image = (Image)imageFile.Clone();                
+                Bitmap bm = new Bitmap(imageFile);
                 newGraphics.Dispose();
-                //pbImage.Invalidate();
-                pbImage.Refresh();
+                return bm;
             }
         }
 
         private void pbImage_Paint(object sender, PaintEventArgs e)
         {
-            if (annotationType == 'C')
-                e.Graphics.DrawImage(Properties.Resources.correct, hover.X, hover.Y - PDF.iHeight / 2, PDF.iWidth, PDF.iHeight);
-            else if (annotationType == 'I')
-                e.Graphics.DrawImage(Properties.Resources.wrong, hover.X, hover.Y - PDF.iHeight / 2, PDF.iWidth, PDF.iHeight);
-            else if (annotationType == 'M')
+            if (DATA.sourcePDFpath != WelcomeFilePath)//paintEnabled && DATA.OriginalImages != null)
             {
-                e.Graphics.DrawString($"{DATA.finalScore}", drawFontL, drawBrush, hover.X, hover.Y);
-                e.Graphics.DrawString($"------", drawFontL, drawBrush, hover.X, hover.Y + 16);
-                e.Graphics.DrawString($"{DATA.outOf}", drawFontL, drawBrush, hover.X, hover.Y + 40);
-            }
+                if (annotationType == 'C')
+                    e.Graphics.DrawImage(Properties.Resources.correct, hover.X, hover.Y - PDF.iHeight / 2, PDF.iWidth, PDF.iHeight);
+                else if (annotationType == 'I')
+                    e.Graphics.DrawImage(Properties.Resources.wrong, hover.X, hover.Y - PDF.iHeight / 2, PDF.iWidth, PDF.iHeight);
+                else if (annotationType == 'M')
+                {
+                    e.Graphics.DrawString($"{DATA.finalScore}", drawFontL, drawBrush, hover.X, hover.Y);
+                    e.Graphics.DrawString($"------", drawFontL, drawBrush, hover.X, hover.Y + 16);
+                    e.Graphics.DrawString($"{DATA.outOf}", drawFontL, drawBrush, hover.X, hover.Y + 40);
+                }
 
-            if ((annotationType == 'C' || annotationType == 'I') && score != "")
-                e.Graphics.DrawString($"({score})", drawFontL, drawBrush, hover.X + PDF.iWidth, hover.Y);
+                if ((annotationType == 'C' || annotationType == 'I') && score != "")
+                    e.Graphics.DrawString($"({score})", drawFontL, drawBrush, hover.X + PDF.iWidth, hover.Y);
+            }
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
@@ -275,17 +274,10 @@ namespace Assignment_Annotator_UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void SaveDocument()
-        {
             SaveDocument();
         }
 
-
-
-        private void pbImage_MouseClick(object sender, MouseEventArgs e)
+        private void SaveDocument()
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF Files | *.pdf";
@@ -300,51 +292,55 @@ namespace Assignment_Annotator_UI
 
         private void AddTick()
         {
-            Annotation tick = new Annotation();
-            tick.Type = annotationType;
-            if (annotationType == 'T')
-                tick.text = DATA.Comment;
-            else
+            if(DATA.sourcePDFpath != WelcomeFilePath)
             {
-                tick.text = score;
-                ctScore = false;
-            }
-
-            tick.x = xf;
-            tick.y = yf;
-            tick.isSelceted = false;
-            ticks.Add(tick);
-            if (pages != null)
-            {
-                pages[pageIndex].tick = ticks.ToArray();
-            }
-            DATA.finalScore = 0;
-            for (int i = 1; i <= DATA.pageCount; i++)
-            {
-                if (pages[i - 1].tick != null)
+                Annotation tick = new Annotation();
+                tick.Type = annotationType;
+                if (annotationType == 'T')
+                    tick.text = DATA.Comment;
+                else
                 {
-                    foreach (var item in pages[i - 1].tick)
-                    {
-                        if (item.text != "" && item.Type != 'T')
-                        {
-                            double val = 0;
-                            if (Double.TryParse(item.text, out val))
-                            {
-                                DATA.finalScore += val;
-                                txtScore.Text = DATA.finalScore.ToString();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Marks must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                ticks.RemoveAt(ticks.Count - 1);
-                            }
+                    tick.text = score;
+                    ctScore = false;
+                }
 
+                tick.x = xf;
+                tick.y = yf;
+                tick.isSelceted = false;
+                ticks.Add(tick);
+                if (pages != null)
+                {
+                    pages[pageIndex].tick = ticks.ToArray();
+                }
+                DATA.finalScore = 0;
+                for (int i = 1; i <= DATA.pageCount; i++)
+                {
+                    if (pages[i - 1].tick != null)
+                    {
+                        foreach (var item in pages[i - 1].tick)
+                        {
+                            if (item.text != "" && item.Type != 'T')
+                            {
+                                double val = 0;
+                                if (Double.TryParse(item.text, out val))
+                                {
+                                    DATA.finalScore += val;
+                                    txtScore.Text = DATA.finalScore.ToString();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Marks must be a valid number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    ticks.RemoveAt(ticks.Count - 1);
+                                }
+
+                            }
                         }
+                        if (DATA.finalScore > DATA.outOf)
+                            MessageBox.Show("Total score is over the maximum value!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    if (DATA.finalScore > DATA.outOf)
-                        MessageBox.Show("Total score is over the maximum value!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            
         }
 
         private void pbImage_MouseMove(object sender, MouseEventArgs e)
@@ -524,14 +520,6 @@ namespace Assignment_Annotator_UI
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            if (File.Exists(WelcomeFilePath))
-            {
-                OpenFile(WelcomeFilePath);
-            }
-        }
-
         private void tsmiCheckForUpdates_Click(object sender, EventArgs e)
         {
             updater.DoUpdate();
@@ -609,6 +597,14 @@ namespace Assignment_Annotator_UI
         private void saveDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveDocument();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(WelcomeFilePath))
+            {
+                //OpenFile(WelcomeFilePath);
+            }
         }
     }
 }

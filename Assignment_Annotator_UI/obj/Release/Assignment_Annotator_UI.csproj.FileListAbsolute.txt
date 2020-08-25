@@ -13,7 +13,6 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\b
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\itext.sign.dll
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\itext.styledxmlparser.dll
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\itext.svg.dll
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\O2S.Components.PDFRender4NET.dll
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\SharpUpdate.dll
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\BouncyCastle.Crypto.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Common.Logging.pdb
@@ -39,3 +38,14 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\o
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.exe
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.pdb
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.AboutForm.resources
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Spire.License.dll
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Spire.Pdf.dll
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Microsoft.mshtml.dll
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Spire.License.xml
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Spire.Pdf.xml
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Assignment_Annotator_UI.exe.manifest
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Assignment_Annotator_UI.application
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.TrustInfo.xml
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.exe.manifest
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\Release\Assignment_Annotator_UI.application
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\O2S.Components.PDFView4NET.dll

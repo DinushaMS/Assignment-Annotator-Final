@@ -70,6 +70,7 @@
             this.saveDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repositionFinalScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.mainMenu.SuspendLayout();
             this.mainToolsMenu.SuspendLayout();
             this.pnlImage.SuspendLayout();
@@ -121,6 +122,7 @@
             this.btnPrev,
             this.txtPage,
             this.btnNext,
+            this.toolStripSeparator5,
             this.toolStripLabel1,
             this.toolStripSeparator2,
             this.txtScore,
@@ -431,6 +433,11 @@
             this.repositionFinalScoreToolStripMenuItem.Text = "Reposition final score";
             this.repositionFinalScoreToolStripMenuItem.Click += new System.EventHandler(this.repositionFinalScoreToolStripMenuItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,6 +453,7 @@
             this.Name = "MainForm";
             this.Text = "Assignment Annotator";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
@@ -502,6 +510,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveDocumentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem repositionFinalScoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 
