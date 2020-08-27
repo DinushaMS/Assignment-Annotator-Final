@@ -7,7 +7,7 @@ update
 [UPDATE_TYPE]
 
 [UPDATE_URL]
-https://raw.githubusercontent.com/DinushaMS/Assignment-Annotator-Final/master/Assignment_Annotator_UI/bin/Release/Assignment_Annotator_UI.exe
+https://raw.githubusercontent.com/DinushaMS/Assignment-Annotator-Final/master/Assignment_Annotator_UI/bin/Publish/Assignment_Annotator_UI.exe
 [UPDATE_URL]
 
 [UPDATE_FILE_PATH]

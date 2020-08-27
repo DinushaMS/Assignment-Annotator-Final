@@ -83,7 +83,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -280,6 +280,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Xml_Writer_ConsoleApp.exe</PostBuildEvent>
+    <PostBuildEvent>C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Xml_Writer_ConsoleApp.exe</PostBuildEvent>
   </PropertyGroup>
 </Project>
