@@ -44,4 +44,3 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\o
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csproj.CopyComplete
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.exe
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.pdb
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csprojAssemblyReference.cache

@@ -43,6 +43,7 @@ namespace Assignment_Annotator_UI
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             //MessageBox.Show($"{e.KeyValue},{e.KeyCode},{e.KeyData}");
+            //
             int n = e.KeyValue - 48;
             if (!ctScore)
             {
