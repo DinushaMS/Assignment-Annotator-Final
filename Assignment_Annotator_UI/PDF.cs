@@ -29,8 +29,8 @@ namespace Assignment_Annotator_UI
             Document document = new Document(pdfDoc);
 
             // Load image from disk
-            string imgC = "correct.png";
-            string imgW = "wrong.png";
+            string imgC = "Stamps//correct.png";
+            string imgW = "Stamps//wrong.png";
             //var image = Properties.Resources.right;
             ImageData correctSign = ImageDataFactory.Create(imgC);
             ImageData wrongSign = ImageDataFactory.Create(imgW);
