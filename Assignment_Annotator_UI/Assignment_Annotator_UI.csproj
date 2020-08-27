@@ -161,6 +161,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddToCSVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddToCSVForm.Designer.cs">
+      <DependentUpon>AddToCSVForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Annotation.cs" />
     <Compile Include="CommentForm.cs">
       <SubType>Form</SubType>
@@ -182,6 +188,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddToCSVForm.resx">
+      <DependentUpon>AddToCSVForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>

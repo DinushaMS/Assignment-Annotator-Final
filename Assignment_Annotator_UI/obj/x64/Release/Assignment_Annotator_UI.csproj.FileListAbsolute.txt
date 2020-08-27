@@ -82,3 +82,4 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\b
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Spire.License.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\Release\Spire.Pdf.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csprojAssemblyReference.cache
+C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.AddToCSVForm.resources

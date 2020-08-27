@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Annotator_UI
 {
-    class Pages
+    public class Pages
     {
         //public int pageWidth { get; set; }
         //public int pageHeight { get; set; }

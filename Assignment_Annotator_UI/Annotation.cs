@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Annotator_UI
 {
-    class Annotation
+    public class Annotation
     {
         public int x { get; set; }
         public int y { get; set; }

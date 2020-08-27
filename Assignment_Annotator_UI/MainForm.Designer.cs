@@ -72,6 +72,7 @@
             this.deleteSelectedAnnotationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repositionFinalScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vsbImage = new System.Windows.Forms.VScrollBar();
+            this.btnCSV = new System.Windows.Forms.ToolStripButton();
             this.mainMenu.SuspendLayout();
             this.mainToolsMenu.SuspendLayout();
             this.pnlImage.SuspendLayout();
@@ -164,6 +165,7 @@
             this.mainToolsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnOpen,
             this.btnSave,
+            this.btnCSV,
             this.toolStripSeparator1,
             this.btnPrev,
             this.txtPage,
@@ -448,6 +450,17 @@
             this.vsbImage.TabIndex = 3;
             this.vsbImage.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbImage_Scroll);
             // 
+            // btnCSV
+            // 
+            this.btnCSV.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCSV.Image = ((System.Drawing.Image)(resources.GetObject("btnCSV.Image")));
+            this.btnCSV.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCSV.Name = "btnCSV";
+            this.btnCSV.Size = new System.Drawing.Size(23, 22);
+            this.btnCSV.Text = "toolStripButton1";
+            this.btnCSV.ToolTipText = "Append to CSV";
+            this.btnCSV.Click += new System.EventHandler(this.btnCSV_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,6 +535,7 @@
         private System.Windows.Forms.ToolStripMenuItem repositionFinalScoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem addToCSVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnCSV;
     }
 }
 

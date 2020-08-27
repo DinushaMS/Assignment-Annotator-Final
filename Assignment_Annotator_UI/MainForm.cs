@@ -19,7 +19,7 @@ namespace Assignment_Annotator_UI
         int yf = 0;
         char annotationType = 'C';
         string score = "1";
-        List<Pages> pages;
+        public static List<Pages> pages;
         List<Annotation> ticks = new List<Annotation>();
         //bool placingFinal = false;
         Point hover = new Point(0, 0);
@@ -600,6 +600,12 @@ namespace Assignment_Annotator_UI
             {
                 OpenFile(WelcomeFilePath);
             }
+        }
+
+        private void btnCSV_Click(object sender, EventArgs e)
+        {
+            AddToCSVForm csvForm = new AddToCSVForm();
+            csvForm.ShowDialog();
         }
     }
 }
