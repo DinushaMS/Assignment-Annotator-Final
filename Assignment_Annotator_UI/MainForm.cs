@@ -37,7 +37,7 @@ namespace Assignment_Annotator_UI
             InitializeComponent();
 
             DATA.pageCount = 0;
-            updater = new SharpUpdater(Assembly.GetExecutingAssembly(), this, new Uri("https://raw.githubusercontent.com/DinushaMS/Assignment-Annotator-Final/master/Assignment_Annotator_UI/bin/Release/update.xml"));
+            updater = new SharpUpdater(Assembly.GetExecutingAssembly(), this, new Uri("https://raw.githubusercontent.com/DinushaMS/Assignment-Annotator-Final/master/Assignment_Annotator_UI/bin/Publish/update.xml"));
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
