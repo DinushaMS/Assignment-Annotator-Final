@@ -1,6 +1,4 @@
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Assignment_Annotator_UI.exe.config
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Assignment_Annotator_UI.exe.manifest
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Assignment_Annotator_UI.application
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Assignment_Annotator_UI.exe
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Assignment_Annotator_UI.pdb
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\BouncyCastle.Crypto.dll
@@ -37,16 +35,12 @@ C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\b
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\SharpUpdate.pdb
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Spire.License.xml
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\bin\x64\Release\Spire.Pdf.xml
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csprojAssemblyReference.cache
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.AboutForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.CommentForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.MainForm.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.Properties.Resources.resources
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csproj.GenerateResource.cache
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csproj.CoreCompileInputs.cache
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.TrustInfo.xml
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.exe.manifest
-C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.application
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.csproj.CopyComplete
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.exe
 C:\Users\dinus\Source\Repos\Assignment-Annotator-Final\Assignment_Annotator_UI\obj\x64\Release\Assignment_Annotator_UI.pdb
