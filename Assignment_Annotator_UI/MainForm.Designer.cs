@@ -36,6 +36,7 @@
             this.saveDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,6 @@
             this.deleteSelectedAnnotationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repositionFinalScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vsbImage = new System.Windows.Forms.VScrollBar();
-            this.addToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainToolsMenu.SuspendLayout();
             this.pnlImage.SuspendLayout();
@@ -129,6 +129,12 @@
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // addToCSVToolStripMenuItem
+            // 
+            this.addToCSVToolStripMenuItem.Name = "addToCSVToolStripMenuItem";
+            this.addToCSVToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.addToCSVToolStripMenuItem.Text = "Add to CSV";
             // 
             // helpToolStripMenuItem
             // 
@@ -255,6 +261,7 @@
             // 
             // txtScore
             // 
+            this.txtScore.Enabled = false;
             this.txtScore.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(25, 25);
@@ -440,12 +447,6 @@
             this.vsbImage.Size = new System.Drawing.Size(17, 401);
             this.vsbImage.TabIndex = 3;
             this.vsbImage.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vsbImage_Scroll);
-            // 
-            // addToCSVToolStripMenuItem
-            // 
-            this.addToCSVToolStripMenuItem.Name = "addToCSVToolStripMenuItem";
-            this.addToCSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addToCSVToolStripMenuItem.Text = "Add to CSV";
             // 
             // MainForm
             // 

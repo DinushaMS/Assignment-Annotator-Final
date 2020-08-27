@@ -12,7 +12,6 @@ namespace Assignment_Annotator_UI
 {
     public partial class MainForm : Form
     {
-        AboutForm aboutForm;
         SharpUpdater updater;
         bool ctScore = false;
         int pageIndex = 0;
@@ -528,13 +527,8 @@ namespace Assignment_Annotator_UI
 
         private void tsmiAbout_Click(object sender, EventArgs e)
         {
-            if (aboutForm == null)
-            {
-                aboutForm = new AboutForm();
-                aboutForm.Show();
-            }
-            else
-                aboutForm.Activate();
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -604,7 +598,7 @@ namespace Assignment_Annotator_UI
         {
             if (File.Exists(WelcomeFilePath))
             {
-                //OpenFile(WelcomeFilePath);
+                OpenFile(WelcomeFilePath);
             }
         }
     }
