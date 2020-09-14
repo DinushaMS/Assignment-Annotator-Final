@@ -143,12 +143,13 @@ namespace Assignment_Annotator_UI
             DATA.fileName = Path.GetFileName(ofd.FileName);
             if (response == DialogResult.OK)
             {
+                pageIndex = 0;
                 OpenFile(ofd.FileName);
             }
         }
         private void pbImage_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 30;
+            int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 5;
             //Console.WriteLine($"Hit{numberOfTextLinesToMove}");
             if (vsbImage.Value - numberOfTextLinesToMove >= 0 && vsbImage.Value - numberOfTextLinesToMove <= vsbImage.Maximum)
             {
@@ -255,21 +256,18 @@ namespace Assignment_Annotator_UI
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (pageIndex - 1 >= 0)
-            {
-                pageIndex -= 1;
-                ViewPage();
-            }
-
+            pageIndex -= 1;
+            if (pageIndex < 0)
+                pageIndex = DATA.pageCount-1;
+            ViewPage();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (pageIndex + 1 <= DATA.pageCount - 1)
-            {
-                pageIndex += 1;
-                ViewPage();
-            }
+            pageIndex += 1;
+            if (pageIndex > DATA.pageCount - 1)
+                pageIndex = 0;
+            ViewPage();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
